@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { CourseContext } from "./CourseContext";
 
 function SchoolCatalog() {
   const [courses, setCourses] = useState([]);
@@ -8,6 +9,9 @@ function SchoolCatalog() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
   const [showAll, setShowAll] = useState(false);
+
+  // context enroll function
+  const { enrolledCourses, enrollCourse } = useContext(CourseContext);
 
   // fetches courses from courses.json
   useEffect(() => {
@@ -81,6 +85,13 @@ function SchoolCatalog() {
   const hasMore = sortedCourses.length > page * pageSize;
   const hasLess = page > 1;
 
+  // checks to see if class is in enrolled courses to change Enroll to Enrolled
+  const isEnrolled = (courseNumber) => {
+    return enrolledCourses.some(
+      (enrolled) => enrolled.courseNumber === courseNumber
+    );
+  };
+
   // Rendered HTML
   return (
     <div className="school-catalog">
@@ -151,7 +162,12 @@ function SchoolCatalog() {
               <td className="course-credits">{course.semesterCredits}</td>
               <td className="course-hours">{course.totalClockHours}</td>
               <td>
-                <button>Enroll</button>
+                <button
+                  onClick={() => enrollCourse(course)}
+                  disabled={isEnrolled(course.courseNumber)}
+                >
+                  {isEnrolled(course.courseNumber) ? "Enrolled" : "Enroll"}
+                </button>
               </td>
             </tr>
           ))}
