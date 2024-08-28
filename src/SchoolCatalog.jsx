@@ -26,7 +26,7 @@ function SchoolCatalog() {
         </thead>
         <tbody>
           {courses.map((course) => (
-            <tr>
+            <tr key={course.Number}>
               <td className="courseTimester">{course.trimester}</td>
               <td className="courseNumber">{course.courseNumber}</td>
               <td className="courseName">{course.courseName}</td>
