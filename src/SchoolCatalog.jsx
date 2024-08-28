@@ -1,4 +1,14 @@
-export default function SchoolCatalog() {
+import { useEffect, useState } from "react";
+
+function SchoolCatalog() {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    fetch("../api/courses.json")
+      .then((response) => response.json())
+      .then((courses) => setCourses(courses));
+  });
+
   return (
     <div className="school-catalog">
       <h1>School Catalog</h1>
@@ -15,36 +25,18 @@ export default function SchoolCatalog() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>PP1000</td>
-            <td>Beginning Procedural Programming</td>
-            <td>2</td>
-            <td>30</td>
-            <td>
-              <button>Enroll</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>PP1100</td>
-            <td>Basic Procedural Programming</td>
-            <td>4</td>
-            <td>50</td>
-            <td>
-              <button>Enroll</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>OS1000</td>
-            <td>Fundamentals of Open Source Operating Systems</td>
-            <td>2.5</td>
-            <td>37.5</td>
-            <td>
-              <button>Enroll</button>
-            </td>
-          </tr>
+          {courses.map((course) => (
+            <tr>
+              <td className="courseTimester">{course.trimester}</td>
+              <td className="courseNumber">{course.courseNumber}</td>
+              <td className="courseName">{course.courseName}</td>
+              <td className="courseCredits">{course.semesterCredits}</td>
+              <td className="courseHours">{course.totalClockHours}</td>
+              <td>
+                <button>Enroll</button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <div className="pagination">
@@ -54,3 +46,5 @@ export default function SchoolCatalog() {
     </div>
   );
 }
+
+export default SchoolCatalog;
