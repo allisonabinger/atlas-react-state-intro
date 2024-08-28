@@ -1,13 +1,17 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { CourseContext } from "./CourseContext";
 
 export default function ClassSchedule() {
+  // uses course context for warning
   const { enrolledCourses, dropCourse } = useContext(CourseContext);
 
   return (
     <div className="class-schedule">
       <h1>Class Schedule</h1>
-      <div className="warning" style={enrolledCourses.length >= 5 ? {} : {display: 'none'}}>
+      <div
+        className="warning"
+        style={enrolledCourses.length >= 5 ? {} : { display: "none" }}
+      >
         Careful! Too many classes may lead to burn-out!
       </div>
       <table>
