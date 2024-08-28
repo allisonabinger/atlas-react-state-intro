@@ -5,7 +5,11 @@ function SchoolCatalog() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortColumn, setSortColumn] = useState("trimester");
   const [sortDirection, setSortDirection] = useState("asc");
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [showAll, setShowAll] = useState(false);
 
+  // fetches courses from courses.json
   useEffect(() => {
     fetch("../api/courses.json")
       .then((response) => response.json())
@@ -24,6 +28,15 @@ function SchoolCatalog() {
     } else {
       setSortColumn(column);
       setSortDirection("asc");
+    }
+  };
+
+  const handleShowAll = () => {
+    setShowAll((prevShowAll) => !prevShowAll);
+    if (!showAll) {
+      setPageSize(sortedCourses.length);
+    } else {
+      setPageSize(5);
     }
   };
 
@@ -57,18 +70,32 @@ function SchoolCatalog() {
     if (sortColumn === "totalClockHours") {
       comparison = Number(a.totalClockHours) - Number(b.totalClockHours);
     }
-    return sortDirection === 'asc' ? comparison : -comparison
+    return sortDirection === "asc" ? comparison : -comparison;
   });
 
+  // paginates data
+  const currentPage = sortedCourses.slice(
+    (page - 1) * pageSize,
+    page * pageSize
+  );
+  const hasMore = sortedCourses.length > page * pageSize;
+  const hasLess = page > 1;
+
+  // Rendered HTML
   return (
     <div className="school-catalog">
       <h1>School Catalog</h1>
-      <input
-        type="text"
-        placeholder="Search by Name or Course Number"
-        value={searchTerm}
-        onChange={handleSearch}
-      />
+      <div className="search-show">
+        <input
+          type="text"
+          placeholder="Search by Name or Course Number"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+        <button onClick={handleShowAll} className="showAll">
+          {showAll ? "Show Less" : "Show All"}
+        </button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -116,7 +143,7 @@ function SchoolCatalog() {
           </tr>
         </thead>
         <tbody>
-          {sortedCourses.map((course) => (
+          {currentPage.map((course) => (
             <tr key={course.courseNumber}>
               <td className="course-trimester">{course.trimester}</td>
               <td className="course-number">{course.courseNumber}</td>
@@ -131,8 +158,12 @@ function SchoolCatalog() {
         </tbody>
       </table>
       <div className="pagination">
-        <button>Previous</button>
-        <button>Next</button>
+        <button disabled={!hasLess} onClick={() => setPage(page - 1)}>
+          Previous
+        </button>
+        <button disabled={!hasMore} onClick={() => setPage(page + 1)}>
+          Next
+        </button>
       </div>
     </div>
   );

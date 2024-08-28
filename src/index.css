@@ -18,12 +18,24 @@ body {
   margin-bottom: 100px;
 }
 
+.search-show {
+    margin: 1rem;
+}
+
+.showAll {
+    width: 150px;
+    border: 1px solid #00003c;
+    border-radius: 30px;
+    padding: 0.75em;
+    margin: 1px 4px 1px 4px;
+}
+
 input {
   width: 300px;
   border: 1px solid #00003c;
   border-radius: 30px;
   padding: 0.75em;
-  margin-bottom: 1em;
+  margin: 1px 4px 1px 4px;
 }
 
 .button {
