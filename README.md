@@ -1,21 +1,21 @@
 <h1 align="center">
 <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" align="left" width="75">
-React State Introduction
+React State: Introduction
 <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" align="right" width="75"></h1>
 
+&nbsp;
+&nbsp;
+&nbsp;
 
-## Intro
-This project introduces the basic concepts of React and JSX. It displays the benefits of decomposing your site into smaller and declarative components that can be reused. This is also the first project of my last trimester at Atlas School, and introduces the beginner concepts of web user interfaces. 
+This project introduces the concepts of state, effects, and context in React by building a student catalog and schedule builder app. It will serve as a basic introduction to state management in React by using the built-in state management methods. The student catalog and school course directory app will load courses from an API, build tables that are searchable, sortable, and support pagination, and allow users to drop and enroll courses from within the app. Bonus features are the inability to add courses if they are already added, as well as a playful warning about not enrolling in too many classes. 
 
 ## Learning Objectives
 
-1. **How to perform local development for React apps**
+1. **How to manage `state` in React components**
 
-2. **How to create React components with JSX**
+2. **React `hooks`: useState, useEffect, and useContext**
 
-3. **How React `props` work**
-
-4. **How to build and deploy a React app to the cloud**
+3. **Using Context Providers to avoid prop drilling**
 
 &nbsp;
 ---
@@ -24,14 +24,11 @@ This project introduces the basic concepts of React and JSX. It displays the ben
 ## Resources and Descriptions
 
 
-### [Hello React - Jeremiah Swank](https://atlas-jswank.github.io/blog/hello-react/)
-Getting started with react,components, props, and vite.
+### [React State: useState - Jeremiah Swank](https://atlas-jswank.github.io/blog/react-state/)
+Getting started with react state management.
 
-### [What is JSX? - Jeremiah Swank](https://atlas-jswank.github.io/blog/jsx/)
-Explores the syntax of JSX with React.
-
-### [ES Modules - Jeremiah Swank*](https://atlas-jswank.github.io/blog/es-modules/)
-An explanation of how modules work in modern JavaScript.
+### [React State: useEffect- Jeremiah Swank](https://atlas-jswank.github.io/blog/react-state-effects/)
+Passing data down the component tree without prop drilling.
 
 ### [Vite - A Build Tool for Modern Web Projects](https://vitejs.dev/guide/)
 A tool to help build a faster and leaner development experience for web projects. Very useful for React apps!
