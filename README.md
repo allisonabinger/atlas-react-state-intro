@@ -17,9 +17,7 @@ This project introduces the concepts of state, effects, and context in React by 
 
 3. **Using Context Providers to avoid prop drilling**
 
-&nbsp;
 ---
-&nbsp;
 
 ## Resources and Descriptions
 
@@ -36,9 +34,7 @@ A tool to help build a faster and leaner development experience for web projects
 ### [React Developer Tools - Chrome Extension](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 A chrome extension to enhance the Chrome Developer Tools for debugging and organization.
 
-&nbsp;
 ---
-&nbsp;
 
 ## Getting Started
 
@@ -68,3 +64,6 @@ For more information on using dev containers see this [tutorial](https://atlas-j
 - `npm run dev`: Starts dev server with Hot Module Reloading on port 5173. Anytime a file changes, the changes will automatocally be reflected in the browser
 - `npm run lint`: Run the lint checker with eslint to check for known linting issues
 - `npm run format`: Run prettier to automatically reformat files
+
+
+This README was made with :heart: by Allison Binger, student at Atlas School Tulsa. Find me on [GitHub](https://github.com/allisonabinger) or [LinkedIn](https://linkedin.com/in/allisonbinger)! :smile_cat:
